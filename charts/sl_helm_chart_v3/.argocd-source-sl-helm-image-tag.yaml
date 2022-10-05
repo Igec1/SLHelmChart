@@ -1,8 +1,0 @@
-helm:
-  parameters:
-  - name: sl.image.name
-    value: igec/sl
-    forcestring: true
-  - name: sl.image.tag
-    value: 1.0.2
-    forcestring: true
