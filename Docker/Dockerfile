@@ -1,2 +1,2 @@
-#Latest build on 8/11/2022 14:52
+#Latest build on 6/12/2023 12:50
 FROM snaplogic/snaplex:latest
