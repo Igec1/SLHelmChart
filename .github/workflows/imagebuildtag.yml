@@ -38,7 +38,7 @@ jobs:
         sudo snap install yq
         cd charts/sl_helm_chart_v3
         export IMAGE_TAG=${{github.ref_name}}
-        yq e -i '.image.tag = "IMAGE_TAG"' values.yaml
+        yq e -i '.image.tag = env(IMAGE_TAG)' values.yaml
 
     - name: Commit changes to the repository
       run: |
