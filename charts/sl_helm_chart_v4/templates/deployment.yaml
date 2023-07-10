@@ -110,18 +110,20 @@ spec:
           exec:
             command: ["/bin/sh","-c","/opt/snaplogic/bin/jcc_prestop.sh"]
       volumes:
+        {{- if .Values.enhanced_encrypt_secret }}
         - name: keystore-jks
           secret:
             secretName: {{ .Values.enhanced_encrypt_secret }}
             items:
-            - key: keystore_jks
-              path: jcc-datakeys.jks
+              - key: keystore_jks
+                path: jcc-datakeys.jks
         - name: keystore-pass
           secret:
             secretName: {{ .Values.enhanced_encrypt_secret }}
             items:
-            - key: keystore_pass
-              path: jcc-datakeys.pass
+              - key: keystore_pass
+                path: jcc-datakeys.pass
+        {{- end }}
       {{- if .Values.terminationGracePeriodSeconds }}
       terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
       {{- end }}
