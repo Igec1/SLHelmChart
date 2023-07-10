@@ -3,10 +3,10 @@
 # Declare variables to be passed into your templates.
 
 # Regular nodes count
-jccCount: 0
+jccCount: 1
 
 # Feedmaster nodes count
-feedmasterCount: 1
+feedmasterCount: 0
 
 # Docker image of SnapLogic snaplex
 image:
