@@ -26,9 +26,6 @@ spec:
         - args:
           - |
             sleep 30
-            adduser -D snapuser
-            chown snapuser:snapuser /opt/snaplogic/run/log
-            chmod u+rwx /opt/snaplogic/run/log
             while true; do
               if [ -f /opt/snaplogic/run/log/jcc.json ]; then
                 tail -f /opt/snaplogic/run/log/jcc.json
