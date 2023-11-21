@@ -2,3 +2,4 @@
 FROM snaplogic/snaplex:latest
 # Set the user for subsequent commands
 USER snapuser
+
