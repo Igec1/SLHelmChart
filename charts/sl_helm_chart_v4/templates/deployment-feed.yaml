@@ -45,7 +45,6 @@ spec:
           volumeMounts:
             - name: log-volume-feedmaster
               mountPath: /opt/snaplogic/run/log    
-
      
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
