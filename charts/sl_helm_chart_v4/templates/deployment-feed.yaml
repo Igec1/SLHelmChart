@@ -18,6 +18,10 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}
         app.kubernetes.io/type: fm
     spec:
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsUser: snapuser
+        runAsGroup: snapuser
       enableServiceLinks: false
       volumes:
         - name: log-volume-feedmaster
