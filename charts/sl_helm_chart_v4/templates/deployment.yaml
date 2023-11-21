@@ -46,6 +46,7 @@ spec:
             - name: log-volume
               mountPath: /opt/snaplogic/run/log
        
+       
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: IfNotPresent
