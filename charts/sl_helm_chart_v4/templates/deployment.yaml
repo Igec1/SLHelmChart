@@ -133,7 +133,6 @@ spec:
             items:
             - key: keystore_pass
               path: jcc-datakeys.pass
-
       {{- end }}
       {{- if .Values.terminationGracePeriodSeconds }}
       terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
