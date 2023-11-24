@@ -18,10 +18,6 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}
         app.kubernetes.io/type: jcc
     spec:
-      securityContext:
-        allowPrivilegeEscalation: false
-        runAsUser: snapuser
-        runAsGroup: snapuser
       enableServiceLinks: false
       volumes:
         - name: log-volume
@@ -30,6 +26,8 @@ spec:
         - args:
           - |
             sleep 30
+            chown snapuser:snapuser /opt/snaplogic/run/log
+            chmod rw /opt/snaplogic/run/log
             while true; do
               if [ -f /opt/snaplogic/run/log/jcc.json ]; then
                 tail -f /opt/snaplogic/run/log/jcc.json
