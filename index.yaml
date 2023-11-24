@@ -3,6 +3,15 @@ entries:
   snaplogic-snaplex:
   - apiVersion: v1
     appVersion: "1.0"
+    created: "2023-11-24T15:08:37.461070151Z"
+    description: A Helm chart to deploy SnapLogic Snaplex on Kubernetes
+    digest: be20d23ed1c7d7516be0c50210e011292576efc4c04c5dc9f2fbb9bf66c39d1c
+    name: snaplogic-snaplex
+    urls:
+    - https://github.com/Igec1/SLHelmChart/releases/download/snaplogic-snaplex-0.1.8/snaplogic-snaplex-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v1
+    appVersion: "1.0"
     created: "2023-11-21T12:42:23.074917588Z"
     description: A Helm chart to deploy SnapLogic Snaplex on Kubernetes
     digest: 4b5c8d50ddd65e8bd8ca31a5333d80e67c408f4cbe659ad96061716664b2ce18
@@ -76,6 +85,15 @@ entries:
   snaplogic-snaplex-sidecar:
   - apiVersion: v2
     appVersion: "1.0"
+    created: "2023-11-24T15:08:37.64093802Z"
+    description: A Helm chart to deploy SnapLogic Snaplex on Kubernetes with monitoring
+    digest: b61a8a1b14365a2a4173206161a6ab49db038fe78c55251087df616780365265
+    name: snaplogic-snaplex-sidecar
+    urls:
+    - https://github.com/Igec1/SLHelmChart/releases/download/snaplogic-snaplex-sidecar-1.8.0/snaplogic-snaplex-sidecar-1.8.0.tgz
+    version: 1.8.0
+  - apiVersion: v2
+    appVersion: "1.0"
     created: "2023-11-21T12:42:23.294798037Z"
     description: A Helm chart to deploy SnapLogic Snaplex on Kubernetes with monitoring
     digest: a6245fd6a40831830f4f4ee89718e1a4c6079a129ce20ebd9c78c4c2992f34c9
@@ -146,4 +164,4 @@ entries:
     urls:
     - https://github.com/Igec1/SLHelmChart/releases/download/snaplogic-snaplex-sidecar-1.0.0/snaplogic-snaplex-sidecar-1.0.0.tgz
     version: 1.0.0
-generated: "2023-11-21T12:42:23.294862698Z"
+generated: "2023-11-24T15:08:37.641008723Z"
