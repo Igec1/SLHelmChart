@@ -9,7 +9,7 @@ feedmasterCount: 1
 # Docker image of SnapLogic snaplex
 image:
   repository: igec/sl
-  tag: 1.0.25
+  tag: 1.0.27
 # SnapLogic configuration link
 snaplogic_config_link:
 # SnapLogic Org admin credential
