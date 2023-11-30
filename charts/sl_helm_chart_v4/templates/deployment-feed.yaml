@@ -27,7 +27,7 @@ spec:
           - |
             sleep 30
             chown snapuser:snapuser /opt/snaplogic/run/log
-            chmod +rwx /opt/snaplogic/run/log
+            chmod u+rwx /opt/snaplogic/run/log
             while true; do
               if [ -f /opt/snaplogic/run/log/feed_master.json ]; then
                 tail -f /opt/snaplogic/run/log/feed_master.json
