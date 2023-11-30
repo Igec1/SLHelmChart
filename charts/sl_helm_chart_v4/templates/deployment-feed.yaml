@@ -18,6 +18,9 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}
         app.kubernetes.io/type: fm
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
       enableServiceLinks: false
       volumes:
         - name: log-volume-feedmaster
