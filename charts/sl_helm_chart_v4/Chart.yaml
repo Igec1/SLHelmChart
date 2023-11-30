@@ -2,4 +2,4 @@ apiVersion: v2
 appVersion: "1.2"
 description: A Helm chart to deploy SnapLogic Snaplex on Kubernetes with monitoring
 name: snaplogic-snaplex-sidecar
-version: 1.9.0
+version: 1.10.0
