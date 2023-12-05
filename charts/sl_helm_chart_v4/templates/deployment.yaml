@@ -19,34 +19,23 @@ spec:
         app.kubernetes.io/type: jcc
     spec:
       enableServiceLinks: false
-      volumes:
+      initContainers:
+      - name: snaplogic-volume-permissions
+        image: busybox
+        command: ["sh","-c","chown -R 1000:1000 /opt/snaplogic/run/log"]
+        volumeMounts:
         - name: log-volume
-          emptyDir: {}
+          mountPath: /opt/snaplogic/run/log
       containers:
-        - args:
-          - |
-            sleep 30
-            chown snapuser:snapuser /opt/snaplogic/run/log
-            chmod u+rwx /opt/snaplogic/run/log
-            while true; do
-              if [ -f /opt/snaplogic/run/log/jcc.json ]; then
-                tail -f /opt/snaplogic/run/log/jcc.json
-              fi
-              sleep 1
-            done
-          command:
-          - /bin/sh
-          - -c
-          image: alpine:latest
-          imagePullPolicy: IfNotPresent
-          name: sidecar-container
-          securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
+        - name: promtail-sidecar
+          image: grafana/promtail:latest
+          args:
+          - "-config.file=/etc/promtail/promtail.yaml"
           volumeMounts:
-            - name: log-volume
-              mountPath: /opt/snaplogic/run/log
-       
+          - name: "{{ include "snaplogic-snaplex.name" . }}-jccfeedmastermonitoring"
+            mountPath: /etc/promtail
+          - name: log-volume
+            mountPath: /opt/snaplogic/run/log
        
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -109,7 +98,6 @@ spec:
                   name: {{ .Values.snaplogic_secret }}
                   key: password
         {{- end }}
-          
       {{- if .Values.enhanced_encrypt_secret }}
           volumeMounts:
           - name: keystore-jks
@@ -120,8 +108,7 @@ spec:
             mountPath: "/etc/snaplogic/jcc-datakeys.pass"
             subPath: jcc-datakeys.pass
             readOnly: true
-
-      volumes:
+      
         - name: keystore-jks
           secret:
             secretName: {{ .Values.enhanced_encrypt_secret }}
@@ -138,4 +125,10 @@ spec:
       {{- if .Values.terminationGracePeriodSeconds }}
       terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
       {{- end }}
+      volumes:
+         - name: log-volume
+           emptyDir: {}
+         - name: "{{ include "snaplogic-snaplex.name" . }}-jccfeedmastermonitoring"
+           configMap:
+            name: "{{ include "snaplogic-snaplex.name" . }}-jccfeedmastermonitoring"
 {{- end -}}
